@@ -1,86 +1,110 @@
+// Variables //       
+let playerName;
+let greetPlayer;
+let playersChoice;
+let randomComputersChoice;
+let computersChoice;
+let theWinnerMessage;
+let playAgain;
+let playAgainResponse;
+let theResults;
 
-      //declare variabels at top 
-        let playerName;
-        let greetPlayer;
-        let playersChoice;
-        let computersChoice;
-        let theWinnerMessage;
-        let playAgain;
-        let playAgainResponse;
-        let randomChoice;
-        const gameChoices = ["bear", "ninja", "hunter"];
-        const theResults;
-       
-
+const gameChoices = ["Bear", "Ninja", "Hunter"]; //Array of game choices//
+               
 //Welcome banner and ask for players name//
-  playerName = prompt('Welcome to Bear Hunter Ninja! Please enter your name to get started:  ');
+   playerName = prompt('Welcome to Bear Hunter Ninja! Please enter your name to get started:  ');
 
-  //Greet Player with their name//
+ //check if name was entered or cancelled// 
+  if (!playerName) {
+  alert("Invalid entry. Please refresh to play again or press F5 to Play Again.");
+  document.getElementById("gameResults").innerHTML = "Game cancelled.";
+ } else {
   greetPlayer = `Hi ${playerName} Let's Play!`;
   alert(greetPlayer);
 
-  //Ask players choice//
-   playersChoice = prompt('Who are you: Bear, Ninja, or Hunter?');
+  playAgain = true;
 
-  //Computers random choice
-    randomChoice = Math.floor(Math.random() * gameChoices.length);
-    computersChoice = gameChoices[randomChoice];
+ while (playAgain) {  
 
-   //Determine the winner 9 cases using if else and switch//
-    theWinnerMessage = "";
-   if (playersChoice === "Bear" || playersChoice === "bear") {
+ //Ask players choice//
+ playersChoice = prompt('Who are you: Bear, Ninja, or Hunter?');
+
+//check if choice was entered or cancelled//
+if (!playersChoice) {
+ alert("Invalid entry. Please refresh to play again or press F5 to Play Again.");
+ document.getElementById("gameResults").innerHTML = "Game cancelled.";
+ } 
+
+ playersChoice = playersChoice.toLowerCase(); //lower case for comparison
+
+ if (playersChoice !== "bear" && playersChoice !== "ninja" && playersChoice !== "hunter") {
+     alert("Invalid choice. Please refresh to play again or press F5 to Play Again.");
+     document.getElementById("gameResults").innerHTML = "Game cancelled.";
+        } 
+
+//Randon computers choice//
+ randomComputersChoice = Math.floor(Math.random() * gameChoices.length); 
+ computersChoice = gameChoices[randomComputersChoice].toLowerCase(); //lower case for comparison
+
+//Determine the winner 9 cases using if else and switch//
+ theWinnerMessage = "";
+if (playersChoice === "bear") {
   
    switch (computersChoice) {
-    case "Bear":
+    case "bear":
       theWinnerMessage = "Tie!";
       break;
-    case "Ninja":
+    case "ninja":
       theWinnerMessage  = "You win!";
       break;
-    case  "Hunter":
+    case  "hunter":
       theWinnerMessage = "Computer wins!";
       break;
     default:
         break;
   }
 
-} else if (playersChoice === "Ninja" || playersChoice === "ninja") { //checks for upper or lower case
+} else if (playersChoice === "ninja") { 
 
   switch (computersChoice) {
-    case "Ninja":
+    case "ninja":
       theWinnerMessage = "Tie!";
       break;
-    case  "Bear":
+    case  "bear":
       theWinnerMessage = "Computer wins!";
       break;
-    case  "Hunter":
+    case  "hunter":
       theWinnerMessage = "You win!";
       break;
     default:
      break
   }
-} else if (playersChoice === "Hunter" || playersChoice === "hunter") {
+} else if (playersChoice === "hunter") {
 
   switch (computersChoice) {
-    case "Hunter":
+    case "hunter":
       theWinnerMessage = "Tie!";
       break;
-    case "Bear":
+    case "bear":
       theWinnerMessage = "You win!";
       break;
-    case  "Ninja":
+    case  "ninja":
       theWinnerMessage = "Computer wins!";
       break;
     default:
       break;
   }
-
 } 
-playAgainResponse = prompt(`${playerName}\n would you like to play again, Yes or No`);
 
- // Game results/Winner message //
+ // Game results and promt to play again //
  theResults = `${playerName}, You picked ${playersChoice}! The computer picked ${computersChoice}! ${theWinnerMessage}`;
-  document.getElementById('gameResults').innerHTML = theResults; 
+ alert(theResults);
+ playAgainResponse = prompt(`${playerName}, would you like to play again, Yes or No?`);
+
  
-    
-   
+    if (!playAgainResponse || playAgainResponse.toLowerCase() !== 'yes') {
+        playAgain = false;
+        document.getElementById('gameResults').innerHTML = theResults; 
+    }
+}
+ }
