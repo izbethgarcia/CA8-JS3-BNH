@@ -1,18 +1,33 @@
+
+      //declare variabels at top 
+        let playerName;
+        let greetPlayer;
+        let playersChoice;
+        let computersChoice;
+        let theWinnerMessage;
+        let playAgain;
+        let playAgainResponse;
+        let randomChoice;
+        const gameChoices = ["bear", "ninja", "hunter"];
+        const theResults;
+       
+
 //Welcome banner and ask for players name//
-  let playerName = prompt('Welcome to Bear Hunter Ninja! Please enter your name to get started:  ');
+  playerName = prompt('Welcome to Bear Hunter Ninja! Please enter your name to get started:  ');
 
   //Greet Player with their name//
-  let greetPlayer = `Hi ${playerName} Let's Play!`;
+  greetPlayer = `Hi ${playerName} Let's Play!`;
   alert(greetPlayer);
 
   //Ask players choice//
-  let playersChoice = prompt('Who are you: Bear, Ninja, or Hunter?');
+   playersChoice = prompt('Who are you: Bear, Ninja, or Hunter?');
 
-  //Computers hard coded choice//
-  let computersChoice = "Bear"; 
+  //Computers random choice
+    randomChoice = Math.floor(Math.random() * gameChoices.length);
+    computersChoice = gameChoices[randomChoice];
 
    //Determine the winner 9 cases using if else and switch//
-   let theWinnerMessage = "";
+    theWinnerMessage = "";
    if (playersChoice === "Bear" || playersChoice === "bear") {
   
    switch (computersChoice) {
@@ -61,9 +76,10 @@
   }
 
 } 
+playAgainResponse = prompt(`${playerName}\n would you like to play again, Yes or No`);
 
  // Game results/Winner message //
-  const theResults = `${playerName}, You picked ${playersChoice}! The computer picked ${computersChoice}! ${theWinnerMessage}`;
+ theResults = `${playerName}, You picked ${playersChoice}! The computer picked ${computersChoice}! ${theWinnerMessage}`;
   document.getElementById('gameResults').innerHTML = theResults; 
  
     
