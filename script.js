@@ -97,7 +97,7 @@ if (playersChoice === "bear") {
 } 
 
  // Game results and promt to play again //
- theResults = `${playerName}, You picked ${playersChoice}! The computer picked ${computersChoice}! ${theWinnerMessage}`;
+ theResults = `${playerName}, You picked ${playersChoice}! \nThe Computer picked ${computersChoice}! \n${theWinnerMessage}`;
  alert(theResults);
  playAgainResponse = prompt(`${playerName}, would you like to play again, Yes or No?`);
 
