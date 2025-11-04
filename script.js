@@ -8,8 +8,7 @@ let theWinnerMessage;
 let playAgain;
 let playAgainResponse;
 let theResults;
-
-const gameChoices = ["Bear", "Ninja", "Hunter"]; //Array of game choices//
+const GameChoices = ["Bear", "Ninja", "Hunter"]; //Array of game choices//
                
 //Welcome banner and ask for players name//
    playerName = prompt('Welcome to Bear Hunter Ninja! Please enter your name to get started:  ');
@@ -22,7 +21,7 @@ const gameChoices = ["Bear", "Ninja", "Hunter"]; //Array of game choices//
   greetPlayer = `Hi ${playerName} Let's Play!`;
   alert(greetPlayer);
 
-  playAgain = true;
+playAgain = true;
 
  while (playAgain) {  
 
@@ -43,8 +42,8 @@ if (!playersChoice) {
         } 
 
 //Randon computers choice//
- randomComputersChoice = Math.floor(Math.random() * gameChoices.length); 
- computersChoice = gameChoices[randomComputersChoice].toLowerCase(); //lower case for comparison
+ randomComputersChoice = Math.floor(Math.random() * GameChoices.length); 
+ computersChoice = GameChoices[randomComputersChoice].toLowerCase(); //lower case for comparison
 
 //Determine the winner 9 cases using if else and switch//
  theWinnerMessage = "";
